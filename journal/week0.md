@@ -1,6 +1,6 @@
 # Week 0 — Billing and Architecture
 
-
+**homework Hard Assignments**
 **Set a Billing alarm [Precorded]**
 To monitor our spending by using billing alarms on cloud watch. Cloud watch > alarms > billing, then clicked on create alarm. Namespace:AWS/Billing , Metric name: Estimated Charges, Currency: USD
 Then set the conditions threshold to a static value. whenever the estimated charges is greater than the static amount it should give me an alarm. The alarm state trigger “in alarm, then create an SNS topic(MyBillingAlarm) in order to send a message to my email. Then I had to go to my email to respond to the pending confirmation in order to subscribe to it.
