@@ -25,6 +25,8 @@ At IAM > users >Username > create accesskey . and created an  access key
 
 **Conceptual Architecture Diagram or your Napkins**
 
+![Napkindesign](https://github.com/Elochike/aws-bootcamp-cruddur-2023/blob/main/images/bbeb1fbc-8b05-4a32-a3cd-76130facdb6d.jpg)
+
  ![conceptualArc](https://github.com/Elochike/aws-bootcamp-cruddur-2023/blob/main/images/conceptua-design.PNG)
 https://lucid.app/lucidchart/f2bc0e89-f376-4a2e-99af-84f7dbf4cbe4/edit?viewport_loc=-571%2C89%2C1961%2C1185%2C0_0&invitationId=inv_9eb74dfe-ab25-4695-b4ff-ad8dd855642f
 
