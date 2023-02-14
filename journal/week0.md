@@ -1,6 +1,6 @@
 # Week 0 — Billing and Architecture
 
-**Homework Hard Assignments**
+**Homework Assignments**
 
 **Set a Billing alarm**
 
