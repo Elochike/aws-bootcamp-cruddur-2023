@@ -16,6 +16,10 @@ Go to the Billing Console > Budgets > Create a budget – I had to choose a budg
  
 ![buget](https://github.com/Elochike/aws-bootcamp-cruddur-2023/blob/main/images/buget.PNG)
 
+**Setting up AWS Organization Unit**
+Having to manage multiple accounts is of importance and aws organization unit helps with that. You need to log into your root account as thats youer management account and it is advised to great accounts under root account for security concerns. Once you **chech the root** box you can click on **actions** > **create new** you could add **Tags** which helps you to identify what they are. You can also decide to add Security control policies to your orcanisation unit. On the menu side bar click on polices then click on security polices. Then you could create and attach the policy to an organization unit.
+
+
 **Generating AWS Credentials**
 
 At IAM > users >Username > create accesskey . and created an  access key
