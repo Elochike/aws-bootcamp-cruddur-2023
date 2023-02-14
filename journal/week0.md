@@ -22,6 +22,10 @@ Having to manage multiple accounts is of importance and aws organization unit he
 
 ![OrganizationUnit](https://github.com/Elochike/aws-bootcamp-cruddur-2023/blob/main/images/OU.PNG)
 
+**Enabiling cloud trail**
+AWS cloud ttrail is of importance when it comes to security, this help to trace all activites/API call made on your aWS account . Its takes record of logs and stores it in an S3 bucket. This log can then be view for audits and incident responce purposes. On the **search bar** write **cloud trail** then click on **create trail** . You coould enable for all account in my organisation and the click on an S3 bucket for storage if you have one . Enter KMS alias and tags are optional.
+
+![Cloudtrail](https://github.com/Elochike/aws-bootcamp-cruddur-2023/blob/main/images/cloud%20trail.PNG)
 
 **Generating AWS Credentials**
 
