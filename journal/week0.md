@@ -33,6 +33,19 @@ At IAM > users >Username > create accesskey . and created an  access key
 
 
 **CloudShell**
+Cloud shell (AWS CLI) a browser-based, pre-authenticated shell that you can launch directly from the AWS Management Console. But we would need to install clous shell into our workspace so as to contol it from there. Youll need the access key details to login into our clous shell(AWS CLI) through **gitpod**(workspace).Login into gitpod and connect you github account and open the repository.
+Download the AWS CLI with the curl command and Unzip the file with unzip awscliv2.zip
+
+![donwloadAWS](https://github.com/Elochike/aws-bootcamp-cruddur-2023/blob/main/images/o;hiohi.PNG)
+
+Then insall AWS CLI with the SuperUserDo commmand,and run aws --version to check its installed. The next tep is to put in your access ke credentials and save it by usin **gp env**. then use aws sts get-caller-identity for user info.
+
+![accesskey](https://github.com/Elochike/aws-bootcamp-cruddur-2023/blob/main/images/jgipho.PNG)
+
+for Gitpod , you may come back to the workspace youll there may be a new instance spun up. in other to perform the previous task you need to write out a yaml code. Then close gitpod and sin up a new workspace to test.
+
+![gitpodcodw](https://github.com/Elochike/aws-bootcamp-cruddur-2023/blob/main/images/gitpod code.PNG)
+
 
 **Conceptual Architecture Diagram or your Napkins**
 
