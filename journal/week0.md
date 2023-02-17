@@ -44,7 +44,7 @@ Then insall AWS CLI with the SuperUserDo commmand,and run aws --version to check
 
 for Gitpod , you may come back to the workspace youll there may be a new instance spun up. in other to perform the previous task you need to write out a yaml code. Then close gitpod and sin up a new workspace to test.
 
-![gitpodcodw](https://github.com/Elochike/aws-bootcamp-cruddur-2023/blob/main/images/gitpod code.PNG)
+![gitpodcodw](https://github.com/Elochike/aws-bootcamp-cruddur-2023/blob/main/images/gitpodcode.PNG)
 
 
 **Conceptual Architecture Diagram or your Napkins**
@@ -70,7 +70,7 @@ Then logged in using the new IAM account and set up MFA, by setting up the devic
 ![IAM](https://github.com/Elochike/aws-bootcamp-cruddur-2023/blob/main/images/summary.PNG)
  
 Use EventBridge to hookup Health Dashboard to SNS and send notification when there is a service health issue.
-https://github.com/Elochike/aws-bootcamp-cruddur-2023/blob/main/images/cicd.PNG
+
 Review all the questions of each pillars in the Well Architected Tool (No specialized lens)
 
 **Create an architectural diagram (to the best of your ability) the CI/CD logical pipeline in Lucid Charts**
