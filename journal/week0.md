@@ -54,6 +54,11 @@ for Gitpod , you may come back to the workspace youll there may be a new instanc
  ![conceptualArc](https://github.com/Elochike/aws-bootcamp-cruddur-2023/blob/main/images/conceptua-design.PNG)
 https://lucid.app/lucidchart/f2bc0e89-f376-4a2e-99af-84f7dbf4cbe4/edit?viewport_loc=-571%2C89%2C1961%2C1185%2C0_0&invitationId=inv_9eb74dfe-ab25-4695-b4ff-ad8dd855642f
 
+![logical](https://github.com/Elochike/aws-bootcamp-cruddur-2023/blob/main/images/logical%20design.PNG)
+
+https://lucid.app/lucidchart/ed511b9c-37e6-4020-8ea5-e820ab61a519/edit?viewport_loc=-572%2C-154%2C2807%2C1696%2C0_0&invitationId=inv_959cd19b-23a5-4392-b464-4b67d8ee6e7b
+
+
 **Homework  Challenges**
 
 **Destroy your root account credentials ,set MFA,IAM role**
@@ -65,14 +70,13 @@ Then logged in using the new IAM account and set up MFA, by setting up the devic
 ![IAM](https://github.com/Elochike/aws-bootcamp-cruddur-2023/blob/main/images/summary.PNG)
  
 Use EventBridge to hookup Health Dashboard to SNS and send notification when there is a service health issue.
-
+https://github.com/Elochike/aws-bootcamp-cruddur-2023/blob/main/images/cicd.PNG
 Review all the questions of each pillars in the Well Architected Tool (No specialized lens)
 
-Create an architectural diagram (to the best of your ability) the CI/CD logical pipeline in Lucid Charts
+**Create an architectural diagram (to the best of your ability) the CI/CD logical pipeline in Lucid Charts**
 
-![logical](https://github.com/Elochike/aws-bootcamp-cruddur-2023/blob/main/images/logical%20design.PNG)
-
-https://lucid.app/lucidchart/ed511b9c-37e6-4020-8ea5-e820ab61a519/edit?viewport_loc=-572%2C-154%2C2807%2C1696%2C0_0&invitationId=inv_959cd19b-23a5-4392-b464-4b67d8ee6e7b
+![CI/CD](https://github.com/Elochike/aws-bootcamp-cruddur-2023/blob/main/images/cicd.PNG)
+https://lucid.app/lucidchart/14e84ae5-0f20-4768-904f-f305e3b4439f/edit?viewport_loc=-814%2C996%2C3837%2C2318%2C0_0&invitationId=inv_ebcecd02-b35c-48dd-8bf0-4a4a406d79e6
 
 Research the technical and service limits of specific services and how they could impact the technical path for technical flexibility. 
 
