@@ -2,6 +2,16 @@
 
 **Homework Assignments**
 
+**Generating credentials ,set MFA,IAM role**
+
+- Create an aws account and signed in to the account as a root user.
+- Then assign an IAM user using the root user account.
+- A group was then created in order to assign the new IAM user to the group which had admin privileges.
+- Then logged in using the new IAM account and set up MFA.
+- To set up the device go to IAM > Securitycredentials > AssignMFA device, and installing an application on my phone (google authenticator) which would be used to scan the QR codes. For generating numbers for authentication.
+
+![IAM](https://github.com/Elochike/aws-bootcamp-cruddur-2023/blob/main/images/summary.PNG)
+
 **Set a Billing alarm**
 
 - To monitor our spending by using billing alarms on cloud watch.
@@ -80,16 +90,6 @@ https://lucid.app/lucidchart/ed511b9c-37e6-4020-8ea5-e820ab61a519/edit?viewport_
 
 
 **Homework  Challenges**
-
-**Generating credentials ,set MFA,IAM role**
-
-- Create an aws account and signed in to the account as a root user.
-- Then assign an IAM user using the root user account.
-- A group was then created in order to assign the new IAM user to the group which had admin privileges.
-- Then logged in using the new IAM account and set up MFA.
-- To set up the device go to IAM > Securitycredentials > AssignMFA device, and installing an application on my phone (google authenticator) which would be used to scan the QR codes. For generating numbers for authentication.
-
-![IAM](https://github.com/Elochike/aws-bootcamp-cruddur-2023/blob/main/images/summary.PNG)
 
 **Create an architectural diagram (to the best of your ability) the CI/CD logical pipeline in Lucid Charts**
 
