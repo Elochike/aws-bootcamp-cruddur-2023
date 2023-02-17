@@ -4,19 +4,13 @@
 
 **Set a Billing alarm**
 
-To monitor our spending by using billing alarms on cloud watch.
-
-Search for Cloud watch > alarms > billing, then clicked on create alarm. 
-
-Namespace:AWS/Billing , Metric name: Estimated Charges, Currency: USD
-
-Then set the conditions threshold to a static value.
-
-whenever the estimated charges is greater than the static amount it should give you an alarm. 
-
-The alarm state trigger “in alarm, then create an SNS topic(MyBillingAlarm) in order to send a message to my email.
-
-Then go to you email to respond to the pending confirmation in order to subscribe to it.
+- To monitor our spending by using billing alarms on cloud watch.
+- Search for Cloud watch > alarms > billing, then clicked on create alarm. 
+- Namespace:AWS/Billing , Metric name: Estimated Charges, Currency: USD
+- Then set the conditions threshold to a static value.
+- whenever the estimated charges is greater than the static amount it should give you an alarm. 
+- he alarm state trigger “in alarm, then create an SNS topic(MyBillingAlarm) in order to send a message to my email.
+- Then go to you email to respond to the pending confirmation in order to subscribe to it.
  
 ![bill](https://github.com/Elochike/aws-bootcamp-cruddur-2023/blob/main/images/bill-alarm.png.PNG)
 
