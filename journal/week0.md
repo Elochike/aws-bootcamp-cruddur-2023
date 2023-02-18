@@ -8,7 +8,8 @@
 - Then assign an IAM user using the root user account.
 - A group was then created in order to assign the new IAM user to the group which had admin privileges.
 - Then logged in using the new IAM account and set up MFA.
-- To set up the device go to IAM > Securitycredentials > AssignMFA device, and installing an application on my phone (google authenticator) which would be used to scan the QR codes. For generating numbers for authentication.
+- To set up the device go to IAM > Securitycredentials > AssignMFA device, and installing an application on my phone (google authenticator) which would be used to scan the QR codes.
+- To generate access keys go to access keys and click create acces keys
 
 ![IAM](https://github.com/Elochike/aws-bootcamp-cruddur-2023/blob/main/images/summary.PNG)
 
