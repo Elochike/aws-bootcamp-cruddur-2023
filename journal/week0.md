@@ -95,5 +95,6 @@ https://lucid.app/lucidchart/ed511b9c-37e6-4020-8ea5-e820ab61a519/edit?viewport_
 **Create an architectural diagram (to the best of your ability) the CI/CD logical pipeline in Lucid Charts**
 
 ![CI/CD](https://github.com/Elochike/aws-bootcamp-cruddur-2023/blob/main/images/cicd.PNG)
+- CI/CD Pileline focoused on Security of the SDLC
 https://lucid.app/lucidchart/14e84ae5-0f20-4768-904f-f305e3b4439f/edit?viewport_loc=-814%2C996%2C3837%2C2318%2C0_0&invitationId=inv_ebcecd02-b35c-48dd-8bf0-4a4a406d79e6
 
