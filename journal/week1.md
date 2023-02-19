@@ -19,8 +19,7 @@ Gitpod is preinstalled with theis extension
 **Create a Dokerfile**
 Go the the backend folder and create a nefile name (Dockerfile)
 
-...
-
+...dockerfile
 #This takes the download from dockerhub
 FROM python:3.10-slim-buster 
 
@@ -36,5 +35,4 @@ ENV FLASK_ENV=development
 EXPOSE ${PORT}
 CMD [ "python3", "-m" , "flask", "run", "--host=0.0.0.0", "--port=4567"]
 Build Container
-
 ...
