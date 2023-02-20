@@ -11,12 +11,14 @@ ease on deployment (you can easily kill and start up again)
 VSCode Docker Extension
 Docker for VSCode makes it easy to work with Docker
 
+![Docker](https://github.com/Elochike/aws-bootcamp-cruddur-2023/blob/main/images/docker.PNG)
+
 https://code.visualstudio.com/docs/containers/overview
 
 Gitpod is preinstalled with theis extension  
 
 
-#Containerize Backend
+# Containerize Backend
 
 **Create a Dokerfile**
 - Go the the backend folder and create a nefile name (Dockerfile)
@@ -65,6 +67,8 @@ export BACKEND_URL="*"
 python3 -m flask run --host=0.0.0.0 --port=4567
 cd ..
 ```
+![pythonrun](https://github.com/Elochike/aws-bootcamp-cruddur-2023/blob/main/images/python.PNG)
+
 - make sure to unlock the port on the port tab
 - open the link for 4567 in your browser
 - append to the url to /api/activities/home
@@ -73,8 +77,9 @@ cd ..
 **Build Container image**
 docker build -t  backend-flask ./backend-flask
 
+![dockerimages](https://github.com/Elochike/aws-bootcamp-cruddur-2023/blob/main/images/dockerimages.PNG)
 
-Run Container
+**Run Container**
 ```
 docker run --rm -p 4567:4567 -it -e FRONTEND_URL='*' -e BACKEND_URL='*' backend-flask
 ```
@@ -87,6 +92,7 @@ or use this command
 CONTAINER_ID=$(docker run --rm -p 4567:4567 -d backend-flask)
 docker exec CONTAINER_ID -it /bin/bash
 ```
+
 **Delete an Image**
 ```
 docker image rm backend-flask --force
@@ -101,7 +107,7 @@ FLASK_ENV=production PORT=8080 docker run -p 4567:4567 -it backend-flask
 ```
 Look at Dockerfile to see how ${PORT} is interpolated
 
-#Containerize Frontend
+# Containerize Frontend
 
 **Run NPM Install**
 We have to run NPM Install before building the container since it needs to copy the contents of node_modules
@@ -123,6 +129,7 @@ RUN npm install
 EXPOSE ${PORT}
 CMD ["npm", "start"]
 ```
+![npminstall](https://github.com/Elochike/aws-bootcamp-cruddur-2023/blob/main/images/npminstall.PNG)
 
 **Build Container**
 ```
