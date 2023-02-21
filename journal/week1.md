@@ -171,8 +171,40 @@ networks:
     driver: bridge
     name: cruddur
 ```
+# Homework challenges
+***Research on the best practises of writing a dockerfile***
 
+- Avoid installing unnecessary packages -If you install unnecessary packages in your dockerfile, it will increase the build time and the size of the image. Also, each time you make changes in the dockerfile, you will have to go through all the steps to build that same large image again and again. This creates a cascading downward effect on the performance. To avoid this, it’s always advised that only include those packages that are of utmost importance and try avoiding installing the same packages again and again. 
 
+```
+RUN pip3 install -r requirements.txt
+```
+- Chain all RUN commands
+Each RUN command creates a cacheable unit and builds a new intermediate image layer every time. You can avoid this by chaining all your RUN commands into a single RUN command. Also, try to avoid chaining too much cacheable RUN commands because it would then lead to the creation of a large cache and would ultimately lead to cache burst.`
 
+```
+RUN apt-get -y install firefox
+RUN apt-get -y install vim
+RUN apt-get -y update
+```
+The above commands can be chained into a single RUN command.
 
+```
+RUN apt-get -y install firefox \
+   && apt-get -y install vim \
+   && apt-get -y update
+```
 
+- you don’t want to store in the image or in source control, such as:
+Usernames and passwords
+TLS certificates and keys
+SSH keys
+Other important data such as the name of a database or internal server.
+
+- Use a .dockerignore file:
+Similar to .gitignore file, you can specify files and directories inside .dockerignore file which you would like to exclude from your Docker build context. This would result in removing unnecessary files from your Docker Container, reduce the size of the Docker Image, and boost up the build performance.
+
+- Using a minimal base image:
+Using a larger base image with more packages and libraries installed can increase the size of the final Docker image and potentially decrease performance. It is generally recommended to use a minimal base image, such as Alpine Linux, as a starting point for building a Docker image. This can help to reduce the size and complexity of the final image, leading to better performance and faster build times. Additionally, using a minimal base image can also improve security by reducing the number of potential vulnerabilities that may be present in the final image.
+
+-
