@@ -118,7 +118,7 @@ npm i
 
 **Create Docker File**
 - Create a file here: frontend-react-js/Dockerfile
-```
+```dockerfile
 FROM node:16.18
 
 ENV PORT=3000
@@ -143,7 +143,7 @@ docker run -p 3000:3000 -d frontend-react-js
 **Multiple Containers**
 - Create a docker-compose file
 - Create docker-compose.yml at the root of your project.
-```
+```docker-compose
 version: "3.8"
 services:
   backend-flask:
@@ -171,6 +171,80 @@ networks:
     driver: bridge
     name: cruddur
 ```
+
+# Adding DynamoDB Local and Postgres
+We are going to use Postgres and DynamoDB local in future labs We can bring them in as containers and reference them externally
+
+Lets integrate the following into our existing docker compose file:
+
+**Postgres**
+```
+services:
+  db:
+    image: postgres:13-alpine
+    restart: always
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=password
+    ports:
+      - '5432:5432'
+    volumes: 
+      - db:/var/lib/postgresql/data
+volumes:
+  db:
+    driver: local
+```
+
+To install the postgres client into Gitpod
+```
+- name: postgres
+    init: |
+      curl -fsSL https://www.postgresql.org/media/keys/ACCC4CF8.asc|sudo gpg --dearmor -o /etc/apt/trusted.gpg.d/postgresql.gpg
+      echo "deb http://apt.postgresql.org/pub/repos/apt/ `lsb_release -cs`-pgdg main" |sudo tee  /etc/apt/sources.list.d/pgdg.list
+      sudo apt update
+      sudo apt install -y postgresql-client-13 libpq-dev
+ ```
+         
+**DynamoDB Local**
+```
+services:
+  dynamodb-local:
+    # https://stackoverflow.com/questions/67533058/persist-local-dynamodb-data-in-volumes-lack-permission-unable-to-open-databa
+    # We needed to add user:root to get this working.
+    user: root
+    command: "-jar DynamoDBLocal.jar -sharedDb -dbPath ./data"
+    image: "amazon/dynamodb-local:latest"
+    container_name: dynamodb-local
+    ports:
+      - "8000:8000"
+    volumes:
+      - "./docker/dynamodb:/home/dynamodblocal/data"
+    working_dir: /home/dynamodblocal
+ ```
+ 
+Example of using DynamoDB local https://github.com/100DaysOfCloud/challenge-dynamodb-local
+
+# Volumes
+
+directory volume mapping
+
+volumes: 
+- "./docker/dynamodb:/home/dynamodblocal/data"
+named volume mapping
+
+volumes: 
+  - db:/var/lib/postgresql/data
+
+volumes:
+  db:
+    driver: local
+
+
+
+
+
+
+
 # Homework challenges
 ***Research on the best practises of writing a dockerfile***
 
@@ -207,4 +281,3 @@ Similar to .gitignore file, you can specify files and directories inside .docker
 - Using a minimal base image:
 Using a larger base image with more packages and libraries installed can increase the size of the final Docker image and potentially decrease performance. It is generally recommended to use a minimal base image, such as Alpine Linux, as a starting point for building a Docker image. This can help to reduce the size and complexity of the final image, leading to better performance and faster build times. Additionally, using a minimal base image can also improve security by reducing the number of potential vulnerabilities that may be present in the final image.
 
--
