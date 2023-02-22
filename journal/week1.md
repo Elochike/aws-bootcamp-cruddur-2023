@@ -56,39 +56,45 @@ EXPOSE ${PORT}
 CMD [ "python3", "-m" , "flask", "run", "--host=0.0.0.0", "--port=4567"]
 ```
 
-**Run Python**
 - After youve create your dockerfile
-- Youll need to set up the environment variables , run python(container) and append the url
+- Youll need to set up the environment variables , 
 
 ```
 cd backend-flask
 export FRONTEND_URL="*"
 export BACKEND_URL="*"
-python3 -m flask run --host=0.0.0.0 --port=4567
 cd ..
+```
+
+**Build Container image**
+```
+docker build -t  backend-flask ./backend-flask
+```
+![dockerimages](https://github.com/Elochike/aws-bootcamp-cruddur-2023/blob/main/images/dockerimages.PNG)
+
+
+**RUN python(container) and append the url
+
+```
+python3 -m flask run --host=0.0.0.0 --port=4567
 ```
 ![pythonrun](https://github.com/Elochike/aws-bootcamp-cruddur-2023/blob/main/images/python.PNG)
 
+```
+#This also runs and sets up environment variables on the container
+docker run --rm -p 4567:4567 -it -e FRONTEND_URL='*' -e BACKEND_URL='*' backend-flask
+```
 - make sure to unlock the port on the port tab
 - open the link for 4567 in your browser
 - append to the url to /api/activities/home
 - you should get back json data
 
-**Build Container image**
-docker build -t  backend-flask ./backend-flask
-
-![dockerimages](https://github.com/Elochike/aws-bootcamp-cruddur-2023/blob/main/images/dockerimages.PNG)
-
-**Run Container**
-```
-docker run --rm -p 4567:4567 -it -e FRONTEND_URL='*' -e BACKEND_URL='*' backend-flask
-```
-To get into your container 
+**Into Container Shell**
 - click on the docker imaage on 
 - the tool bar and rignt click on the container 
 - click attach shell
-or use this command
 ```
+#or use this command
 CONTAINER_ID=$(docker run --rm -p 4567:4567 -d backend-flask)
 docker exec CONTAINER_ID -it /bin/bash
 ```
