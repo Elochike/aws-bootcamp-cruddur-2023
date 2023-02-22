@@ -73,7 +73,7 @@ docker build -t  backend-flask ./backend-flask
 ![dockerimages](https://github.com/Elochike/aws-bootcamp-cruddur-2023/blob/main/images/dockerimages.PNG)
 
 
-**RUN python(container) and append the url
+**RUN python(container) and append the url**
 
 ```
 python3 -m flask run --host=0.0.0.0 --port=4567
