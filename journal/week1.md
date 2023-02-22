@@ -146,7 +146,7 @@ docker build -t frontend-react-js ./frontend-react-js
 docker run -p 3000:3000 -d frontend-react-js
 ```
 
-**Multiple Containers**
+**Spin Up Multiple Containers with Docker compose**
 - Create a docker-compose file
 - Create docker-compose.yml at the root of your project.
 ```docker-compose
