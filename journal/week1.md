@@ -287,3 +287,42 @@ Similar to .gitignore file, you can specify files and directories inside .docker
 - Using a minimal base image:
 Using a larger base image with more packages and libraries installed can increase the size of the final Docker image and potentially decrease performance. It is generally recommended to use a minimal base image, such as Alpine Linux, as a starting point for building a Docker image. This can help to reduce the size and complexity of the final image, leading to better performance and faster build times. Additionally, using a minimal base image can also improve security by reducing the number of potential vulnerabilities that may be present in the final image.
 
+# RUN docker locally on Kali linux
+- Create a VM on your current windows machine using virtualBox
+- on the  virtualBox make sure to change the network settings to bridge network in other to make the Host os and guest os on the same network
+- lunch the Linux VM and ssh into the VM using Vscode (remote ssh extension)
+- through the remote ssh extension, add the user and ipaddr of the linux VM to connect via ssh
+- Type in (ip a) to check for your current address
+- Also install the docker extension on vscode
+- once your connected vscode would reload and it sholud give a geeen indication that its connected 
+- Then download docker extension 
+- open the terminal on vscode it hould give the same as your linux terminal
+- now downnload docker engine
+```
+sudo apt install docker.io
+```
+- To run docker as a non root user
+- Create the docker group.
+```
+ sudo groupadd docker
+ ```
+- Add your user to the docker group.
+```
+ sudo usermod -aG docker $USER
+ ```
+- Log out and log back in so that your group membership is re-evaluated.
+- If you’re running Linux in a virtual machine, it may be necessary to restart the virtual machine for changes to take effect.
+- You can also run the following command to activate the changes to groups:
+```
+ newgrp docker
+ ```
+- Verify that you can run docker commands without sudo.
+```
+ docker run hello-world
+ ```
+- This command downloads a test image and runs it in a container. When the container runs, it prints a message and exits.
+https://docs.docker.com/engine/install/linux-postinstall/
+
+Then build and test your images
+- 
+- 
