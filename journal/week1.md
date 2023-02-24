@@ -342,6 +342,10 @@ sudo apt install docker.io
 ```
  newgrp docker
  ```
+ or simply run
+ ```
+ sudo chmod 666 /var/run/docker.sock
+ ```
 - Verify that you can run docker commands without sudo.
 ```
  docker run hello-world
