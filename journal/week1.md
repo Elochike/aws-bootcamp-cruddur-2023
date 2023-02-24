@@ -1,5 +1,7 @@
 # Week 1 — App Containerization
 
+![dockerimage](https://github.com/Elochike/aws-bootcamp-cruddur-2023/blob/main/images/dockerimage.webp)
+
 **WHy do we need containers?**
 - Containers make the appps more portable   
 - it reuces time spent on configuration
