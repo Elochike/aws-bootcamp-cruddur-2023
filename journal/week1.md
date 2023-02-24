@@ -100,49 +100,49 @@ docker exec CONTAINER_ID -it /bin/bash
 ```
 
 **How to remove images and containers**
-To remove images first you need to list all images by their ID by running
+- To remove images first you need to list all images by their ID by running
 ```
 docker images
 ```
-Then
+- Then
 ```
 docker rmi <your-image-id>
 ```
-for multiple images
+- for multiple images
 ```
 docker rmi <your-image-id> <your-image-id> ...
 ```
-Remove all images at once
+- Remove all images at once
 ```
 docker rmi $(docker images -q)
 ```
-To stop all running containers
+- To stop all running containers
 ```
 stop $(docker ps -a -q)
 ```
-Delete all stopped containers
+- Delete all stopped containers
 ```
 docker rm $(doocker ps -a -q)
 ```
 https://www.freecodecamp.org/news/how-to-remove-images-in-docker/
 
-docker rmi backend-flask is the legacy syntax, you might see this is old docker tutorials and articles.
+- docker rmi backend-flask is the legacy syntax, you might see this is old docker tutorials and articles.
 ```
 docker image rm backend-flask --force
 ```
-There are some cases where you need to use the --force
+- There are some cases where you need to use the --force
 
 
 **Overriding Ports**
 ```
 FLASK_ENV=production PORT=8080 docker run -p 4567:4567 -it backend-flask
 ```
-Look at Dockerfile to see how ${PORT} is interpolated
+- Look at Dockerfile to see how ${PORT} is interpolated
 
 # Containerize Frontend
 
 **Run NPM Install**
-We have to run NPM Install before building the container since it needs to copy the contents of node_modules
+- We have to run NPM Install before building the container since it needs to copy the contents of node_modules
 ```
 cd frontend-react-js
 npm i
@@ -205,9 +205,9 @@ networks:
 ```
 
 # Adding DynamoDB Local and Postgres
-We are going to use Postgres and DynamoDB local in future labs We can bring them in as containers and reference them externally
+- We are going to use Postgres and DynamoDB local in future labs We can bring them in as containers and reference them externally
 
-Lets integrate the following into our existing docker compose file:
+- Lets integrate the following into our existing docker compose file:
 
 **Postgres**
 ```
@@ -227,7 +227,7 @@ volumes:
     driver: local
 ```
 
-To install the postgres client into Gitpod
+- To install the postgres client into Gitpod
 ```
 - name: postgres
     init: |
@@ -258,8 +258,8 @@ Example of using DynamoDB local https://github.com/100DaysOfCloud/challenge-dyna
 
 # Volumes
 
-directory volume mapping
-
+- directory volume mapping
+```
 volumes: 
 - "./docker/dynamodb:/home/dynamodblocal/data"
 named volume mapping
@@ -270,11 +270,15 @@ volumes:
 volumes:
   db:
     driver: local
-
-
-
-
-
+```
+- Then spin up the containers
+```
+docker compose up
+```
+- check the postgres database
+```
+psql -Upostgres --hoct localhost
+```
 
 
 # Homework challenges
@@ -353,7 +357,7 @@ sudo apt install docker.io
 - This command downloads a test image and runs it in a container. When the container runs, it prints a message and exits.
 https://docs.docker.com/engine/install/linux-postinstall/
 
-To build and test your images ,first clone your repository 
+- To build and test your images ,first clone your repository 
 ```
 git clone <your repo>
 ```
@@ -391,7 +395,7 @@ networks:
     name: cruddur
 
  ```
-Then build your build your containers by runinng 
+- Then build your build your containers by runinng 
 ```
 docker-compose up
 ```
