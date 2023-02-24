@@ -99,13 +99,39 @@ CONTAINER_ID=$(docker run --rm -p 4567:4567 -d backend-flask)
 docker exec CONTAINER_ID -it /bin/bash
 ```
 
-**Delete an Image**
+**How to remove images and containers**
+To remove images first you need to list all images by their ID by running
+```
+docker images
+```
+Then
+```
+docker rmi <your-image-id>
+```
+for multiple images
+```
+docker rmi <your-image-id> <your-image-id> ...
+```
+Remove all images at once
+```
+docker rmi $(docker images -q)
+```
+To stop all running containers
+```
+stop $(docker ps -a -q)
+```
+Delete all stopped containers
+```
+docker rm $(doocker ps -a -q)
+```
+https://www.freecodecamp.org/news/how-to-remove-images-in-docker/
+
+docker rmi backend-flask is the legacy syntax, you might see this is old docker tutorials and articles.
 ```
 docker image rm backend-flask --force
 ```
-docker rmi backend-flask is the legacy syntax, you might see this is old docker tutorials and articles.
-
 There are some cases where you need to use the --force
+
 
 **Overriding Ports**
 ```
