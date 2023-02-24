@@ -353,24 +353,23 @@ sudo apt install docker.io
 - This command downloads a test image and runs it in a container. When the container runs, it prints a message and exits.
 https://docs.docker.com/engine/install/linux-postinstall/
 
-Then build and test your images
-- first clone your repository 
+To build and test your images ,first clone your repository 
 ```
 git clone <your repo>
 ```
-This is to cd into the frontend-react-js folder and install npm modules
+- This is to cd into the frontend-react-js folder and install npm modules
 ```
 cd frontend-react-js
 nmp i
 ```
-Go to the docker compose file and change the URLs
+- Go to the docker compose file and change the URLs
 ```
 version: "3.8"
 services:
   backend-flask:
     environment:
-      FRONTEND_URL: "https://127.0.0.1:3000"
-      BACKEND_URL: "https://127.0.0.1:4567"
+      FRONTEND_URL: "http://localhost:3000"
+      BACKEND_URL: "http://localhost:4567"
     build: ./backend-flask
     ports:
       - "4567:4567"
@@ -378,7 +377,7 @@ services:
       - ./backend-flask:/backend-flask
   frontend-react-js:
     environment:
-      REACT_APP_BACKEND_URL: "https://127.0.0.1:4567"
+      REACT_APP_BACKEND_URL: "http://localhost:4567"
     build: ./frontend-react-js
     ports:
       - "3000:3000"
@@ -390,8 +389,9 @@ networks:
   internal-network:
     driver: bridge
     name: cruddur
+
  ```
 Then build your build your containers by runinng 
 ```
-docker-compose 
+docker-compose up
 ```
