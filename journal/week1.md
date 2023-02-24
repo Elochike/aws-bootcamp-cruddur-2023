@@ -278,8 +278,9 @@ docker compose up
 - check the postgres database
 ```
 psql -Upostgres --hoct localhost
-```
 
+```
+![postgrs](https://github.com/Elochike/aws-bootcamp-cruddur-2023/blob/main/images/postgress.PNG)
 
 # Homework challenges
 ***Research on the best practises of writing a dockerfile***
