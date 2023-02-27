@@ -50,7 +50,7 @@ pip install -r requirements.txt
 ```
 ![pipinst](https://github.com/Elochike/aws-bootcamp-cruddur-2023/blob/main/images/pipinstall.PNG)
 
-Add to the `app.py`
+- Add to the `app.py`
 
 ```py
 from opentelemetry import trace
@@ -78,7 +78,7 @@ RequestsInstrumentor().instrument()
 ![opentel](https://github.com/Elochike/aws-bootcamp-cruddur-2023/blob/main/images/appopentel.PNG)
 
 
-Add the following Env Vars to `backend-flask` in docker compose
+- Add the following Env Vars to `backend-flask` in docker compose
 
 ```yml
 OTEL_EXPORTER_OTLP_ENDPOINT: "https://api.honeycomb.io"
@@ -87,12 +87,41 @@ OTEL_SERVICE_NAME: "${HONEYCOMB_SERVICE_NAME}"
 ```
 ![OTEL](https://github.com/Elochike/aws-bootcamp-cruddur-2023/blob/main/images/OTEL.PNG)
 
-You'll need to grab the API key from your honeycomb account:
+- You'll need to grab the API key from your honeycomb account:
 
 ```sh
 export HONEYCOMB_API_KEY=""
 gp env HONEYCOMB_API_KEY=""
 ```
+**Acquiring a Tracer 
+- To create spans, you need to get a Tracer.
+
+from opentelemetry import trace
+```
+tracer = trace.get_tracer("tracer.name.here")
+```
+**Creating Spans 
+- Now we have a tracer configured, we can create spans to describe what is happening in your application.
+```
+from opentelemetry import trace
+
+tracer = trace.get_tracer(__name__)
+with tracer.start_as_current_span("http-handler"):
+    with tracer.start_as_current_span("my-cool-function"):
+        # do something
+  ```
+  **Adding Attributes to Spans 
+```
+span = trace.get_current_span()
+span.set_attribute("user.id", user.id())
+
+```
+![HA](https://github.com/Elochike/aws-bootcamp-cruddur-2023/blob/main/images/homeActivitiess.PNG)
+
+- Then spin up your docker containers and make an appplication request 
+
+- Go to Honeycomb and check the results
+
 
 
 
