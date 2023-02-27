@@ -24,7 +24,7 @@
 
 - Traditional tracing is much more challenging in a distributed system consisting of multiple services. Microservices scale independently, creating many iterations of the same function. With a monolithic application, you can trace a request through a specific function but with microservices, there could be numerous iterations of the same function, all across different servers and data centers. Distributed tracing allows you to follow requests as they move through each service.
 
-What is the difference between distributed tracing and logging?
+**What is the difference between distributed tracing and logging?
 - The main difference between logging and distributed tracing is that logging provides records from a single application while distributed tracing tracks requests traveling through multiple applications. Both methods help to find and debug issues by allowing you to monitor systems in real-time and look back in time to analyze previous issues.
 
 - The rising use of microservices has introduced new complexity to software systems and by extension, system-monitoring practices. Metrics and logs lack the necessary visibility across all services to provide proper support for distributed systems.
@@ -33,9 +33,8 @@ What is the difference between distributed tracing and logging?
 
 ## HoneyComb
 
-When creating a new dataset in Honeycomb it will provide all these installation insturctions
-
-We'll add the following files to our `requirements.txt`
+- When creating a new dataset in Honeycomb it will provide all these installation insturctions
+- We'll add the following files to our `requirements.txt`
 
 ```
 opentelemetry-api 
@@ -44,12 +43,12 @@ opentelemetry-exporter-otlp-proto-http
 opentelemetry-instrumentation-flask 
 opentelemetry-instrumentation-requests
 ```
-
-We'll install these dependencies:
+- We'll install these dependencies:
 
 ```sh
 pip install -r requirements.txt
 ```
+![pipinst](https://github.com/Elochike/aws-bootcamp-cruddur-2023/blob/main/images/pipinstall.PNG)
 
 Add to the `app.py`
 
@@ -61,8 +60,6 @@ from opentelemetry.exporter.otlp.proto.http.trace_exporter import OTLPSpanExport
 from opentelemetry.sdk.trace import TracerProvider
 from opentelemetry.sdk.trace.export import BatchSpanProcessor
 ```
-
-
 ```py
 # Initialize tracing and an exporter that can send data to Honeycomb
 provider = TracerProvider()
@@ -78,22 +75,23 @@ app = Flask(__name__)
 FlaskInstrumentor().instrument_app(app)
 RequestsInstrumentor().instrument()
 ```
+![opentel](https://github.com/Elochike/aws-bootcamp-cruddur-2023/blob/main/images/appopentel.PNG)
 
-Add teh following Env Vars to `backend-flask` in docker compose
+
+Add the following Env Vars to `backend-flask` in docker compose
 
 ```yml
 OTEL_EXPORTER_OTLP_ENDPOINT: "https://api.honeycomb.io"
 OTEL_EXPORTER_OTLP_HEADERS: "x-honeycomb-team=${HONEYCOMB_API_KEY}"
 OTEL_SERVICE_NAME: "${HONEYCOMB_SERVICE_NAME}"
 ```
+![OTEL](https://github.com/Elochike/aws-bootcamp-cruddur-2023/blob/main/images/OTEL.PNG)
 
 You'll need to grab the API key from your honeycomb account:
 
 ```sh
 export HONEYCOMB_API_KEY=""
-export HONEYCOMB_SERVICE_NAME="Cruddur"
 gp env HONEYCOMB_API_KEY=""
-gp env HONEYCOMB_SERVICE_NAME="Cruddur"
 ```
 
 
