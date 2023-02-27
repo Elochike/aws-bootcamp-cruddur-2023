@@ -1,4 +1,7 @@
 # Week 2 — Distributed Tracing
+
+![disttrace](https://github.com/Elochike/aws-bootcamp-cruddur-2023/blob/main/images/ditributedtracing.png)
+
 - Distributed tracing is a method of observing requests as they  advance through a distributed system. Its primary use is to profile and monitor modern applications built using microservices and (or) cloud native architecture, enabling developers to find performance issues.
 **How distributed tracing works
 - Distributed tracing begins with a single request. Each request is considered a trace and receives a unique ID known as a trace ID to identify that specific transaction. Traces consist of a series of tagged time intervals called spans.
