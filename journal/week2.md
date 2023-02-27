@@ -1,5 +1,32 @@
 # Week 2 — Distributed Tracing
+- Distributed tracing is a method of observing requests as they  advance through a distributed system. Its primary use is to profile and monitor modern applications built using microservices and (or) cloud native architecture, enabling developers to find performance issues.
+**How distributed tracing works
+- Distributed tracing begins with a single request. Each request is considered a trace and receives a unique ID known as a trace ID to identify that specific transaction. Traces consist of a series of tagged time intervals called spans.
 
+- Spans represent the actual work being performed in a distributed system. Along with a name, timestamp, and optional metadata, each span also has a unique ID known as a span ID. Spans have parent-child relationships between each other that are used to show the exact path a transaction takes through the various components of an application.
+
+- When requests move between services, all activity is recorded in the span. Once an activity is complete, the parent span refers to the child span for the next activity. Combining all these spans in the right order forms a single distributed trace that provides an overview of an entire request. Once a trace has run its course, you can search it in a presentation layer of a distributed tracing tool.
+
+**Why do we need distributed tracing?**
+- Without a way to track requests across different services, it's next to impossible to identify the service that is responsible for a performance issue. Distributed tracing provides a way to track a request from start to finish, making troubleshooting any issues faster and easier.
+
+- Modern software architectures provide many advantages to companies. While new practices and technologies like microservices, containers, and DevOps allow teams to manage and operate their individual services more easily, they also bring new challenges. One of the biggest concerns is reduced visibility and the increased difficulty of monitoring your entire IT infrastructure.
+
+- With modern applications, a slow-running response is distributed across several microservices and serverless functions that are monitored by multiple teams. 
+
+- This increased complexity has prompted companies to adjust their observability strategies to provide visibility of the entire request flow, not just services in isolation.
+
+**Distributed tracing provides observability for microservices**
+- Request tracing is straightforward in a monolithic application. It aligns with application performance monitoring (APM) where a reporting tool organizes, processes, and creates visualizations of behavior from requests, helping to show how the system is performing. Developers can use these insights to quickly diagnose and resolve bottlenecks and other performance issues before they impact customer experience.
+
+- Traditional tracing is much more challenging in a distributed system consisting of multiple services. Microservices scale independently, creating many iterations of the same function. With a monolithic application, you can trace a request through a specific function but with microservices, there could be numerous iterations of the same function, all across different servers and data centers. Distributed tracing allows you to follow requests as they move through each service.
+
+What is the difference between distributed tracing and logging?
+- The main difference between logging and distributed tracing is that logging provides records from a single application while distributed tracing tracks requests traveling through multiple applications. Both methods help to find and debug issues by allowing you to monitor systems in real-time and look back in time to analyze previous issues.
+
+- The rising use of microservices has introduced new complexity to software systems and by extension, system-monitoring practices. Metrics and logs lack the necessary visibility across all services to provide proper support for distributed systems.
+
+- Logs only provide insight into the state of a single application with specific time-stamped events that took place in the system. Application performance monitoring provides a more comprehensive way to find the root cause of performance issues. Most APM tools offer some form of distributed tracing while also providing detailed diagnostic data including code-level insights and queries.
 
 ## HoneyComb
 
