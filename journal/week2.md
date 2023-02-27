@@ -93,14 +93,14 @@ OTEL_SERVICE_NAME: "${HONEYCOMB_SERVICE_NAME}"
 export HONEYCOMB_API_KEY=""
 gp env HONEYCOMB_API_KEY=""
 ```
-**Acquiring a Tracer 
+**Acquiring a Tracer**
 - To create spans, you need to get a Tracer.
 
 from opentelemetry import trace
 ```
 tracer = trace.get_tracer("tracer.name.here")
 ```
-**Creating Spans 
+**Creating Spans**
 - Now we have a tracer configured, we can create spans to describe what is happening in your application.
 ```
 from opentelemetry import trace
@@ -120,9 +120,18 @@ span.set_attribute("user.id", user.id())
 
 - Then spin up your docker containers and make an appplication request 
 
-- Go to Honeycomb and check the results
+**Go to Honeycomb and check the results**
+- Run a query that shows Slowest traces
+- Show durations of the slowest traces over the past 2 hours.
+- By using a MAX(durationMs) calculation, we can identify the traces that took the longest overall. 
+- it show the slowest was about 4.8 seconds
 
 
+![HCgrapone](https://github.com/Elochike/aws-bootcamp-cruddur-2023/blob/main/images/honeycombactivi.PNG)
+
+![HCgraphtwo](https://github.com/Elochike/aws-bootcamp-cruddur-2023/blob/main/images/secondhoneycomb.PNG)
+
+![HCgraphthree](https://github.com/Elochike/aws-bootcamp-cruddur-2023/blob/main/images/honeycombtrace.PNG)
 
 
 ## X-Ray
