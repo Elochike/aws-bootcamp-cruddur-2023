@@ -144,20 +144,20 @@ export AWS_REGION="ca-central-1"
 gp env AWS_REGION="ca-central-1"
 ```
 
-Add to the `requirements.txt`
+- Add to the `requirements.txt`
 
 ```py
 aws-xray-sdk
 ```
 
-Install pythonpendencies
+- Install pythonpendencies
 
 ```sh
 pip install -r requirements.txt
 ```
 
-Add to `app.py`
-
+- Add to `app.py`
+- This code configures the AWS X-Ray SDK for Python to instrument a Flask web application with X-Ray
 ```py
 from aws_xray_sdk.core import xray_recorder
 from aws_xray_sdk.ext.flask.middleware import XRayMiddleware
