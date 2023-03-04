@@ -24,8 +24,23 @@ from opentelemetry.sdk.trace import TracerProvider
 from opentelemetry.sdk.trace.export import BatchSpanProcessor
 
 #X-Ray......
-from aws_xray_sdk.core import xray_recorder
-from aws_xray_sdk.ext.flask.middleware import XRayMiddleware
+#from aws_xray_sdk.core import xray_recorder
+#from aws_xray_sdk.ext.flask.middleware import XRayMiddleware
+
+#watchtower
+import watchtower
+import logging
+from time import strftime
+
+# Configuring Logger to Use CloudWatch
+#diabled based on spend
+#LOGGER = logging.getLogger(__name__)
+#LOGGER.setLevel(logging.DEBUG)
+#console_handler = logging.StreamHandler()
+#cw_handler = watchtower.CloudWatchLogHandler(log_group='cruddur')
+#LOGGER.addHandler(console_handler)
+#LOGGER.addHandler(cw_handler)
+#LOGGER.info("test log")
 
 
 # Honrycomb
@@ -37,14 +52,16 @@ trace.set_tracer_provider(provider)
 tracer = trace.get_tracer(__name__)
 
 #Xray... to start and send data to the deamon for proccessing
-xray_url = os.getenv("AWS_XRAY_URL")
-xray_recorder.configure(service='backend-flask', dynamic_naming=xray_url)
+#spend considerations
+#xray_url = os.getenv("AWS_XRAY_URL")
+#xray_recorder.configure(service='backend-flask', dynamic_naming=xray_url)
 
 
 
 app = Flask(__name__)
 #xray...
-XRayMiddleware(app, xray_recorder)
+#XRayMiddleware(app, xray_recorder)
+
 #Honeycomb
 # Initialize automatic instrumentation with Flask
 FlaskInstrumentor().instrument_app(app)
@@ -61,6 +78,12 @@ cors = CORS(
   allow_headers="content-type,if-modified-since",
   methods="OPTIONS,GET,HEAD,POST"
 )
+#cloudwatchlogs
+#@app.after_request
+#def after_request(response):
+#    timestamp = strftime('[%Y-%b-%d %H:%M]')
+#    LOGGER.error('%s %s %s %s %s %s', timestamp, request.remote_addr, request.method, request.scheme, request.full_path, response.status)
+#    return response
 
 @app.route("/api/message_groups", methods=['GET'])
 def data_message_groups():
@@ -70,6 +93,7 @@ def data_message_groups():
     return model['errors'], 422
   else:
     return model['data'], 200
+
 
 @app.route("/api/messages/@<string:handle>", methods=['GET'])
 def data_messages(handle):
