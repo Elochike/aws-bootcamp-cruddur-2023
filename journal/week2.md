@@ -348,7 +348,9 @@ Install deps
 pip install -r requirements.txt
 ```
 
-We need to set our access token
+- We need to set our access token
+- Go to rollbar website and get your access token to set the variavle 
+![rollbarweb](https://github.com/Elochike/aws-bootcamp-cruddur-2023/blob/main/images/ROLLbAR.PNG)
 
 ```sh
 export ROLLBAR_ACCESS_TOKEN=""
@@ -368,6 +370,9 @@ import rollbar
 import rollbar.contrib.flask
 from flask import got_request_exception
 ```
+
+![rollbarcode](https://github.com/Elochike/aws-bootcamp-cruddur-2023/blob/main/images/rollbarcode.PNG)
+
 
 ```py
 rollbar_access_token = os.getenv('ROLLBAR_ACCESS_TOKEN')
@@ -396,6 +401,16 @@ def rollbar_test():
     rollbar.report_message('Hello World!', 'warning')
     return "Hello World!"
 ```
-
+![rollbarrot](https://github.com/Elochike/aws-bootcamp-cruddur-2023/blob/main/images/rollbarot.PNG)
 
 [Rollbar Flask Example](https://github.com/rollbar/rollbar-flask-example/blob/master/hello.py)
+
+
+
+
+
+
+
+
+
+
