@@ -264,7 +264,7 @@ aws xray get-service-graph --start-time $(($EPOCH-600)) --end-time $EPOCH
 
 ## CloudWatch Logs
 
-Add to the `requirements.txt`
+- Add to the `requirements.txt`
 
 ```
 watchtower
@@ -301,22 +301,32 @@ def after_request(response):
     LOGGER.error('%s %s %s %s %s %s', timestamp, request.remote_addr, request.method, request.scheme, request.full_path, response.status)
     return response
 ```
+![cloudwatchcode](https://github.com/Elochike/aws-bootcamp-cruddur-2023/blob/main/images/cloudwatchcode.PNG)
 
-We'll log something in an API endpoint
+
+- We'll log something in an API endpoint
+
 ```py
 LOGGER.info('Hello Cloudwatch! from  /api/activities/home')
 ```
+- also pass Logger=LOGGER
 
-Set the env var in your backend-flask for `docker-compose.yml`
+![cloudlogger](https://github.com/Elochike/aws-bootcamp-cruddur-2023/blob/main/images/cloudwatchlogger.PNG)
+
+- Set the env var in your backend-flask for `docker-compose.yml`
 
 ```yml
       AWS_DEFAULT_REGION: "${AWS_DEFAULT_REGION}"
       AWS_ACCESS_KEY_ID: "${AWS_ACCESS_KEY_ID}"
       AWS_SECRET_ACCESS_KEY: "${AWS_SECRET_ACCESS_KEY}"
 ```
+![cloudwatchenv](https://github.com/Elochike/aws-bootcamp-cruddur-2023/blob/main/images/cloudwatchenv.PNG)
 
 > passing AWS_REGION doesn't seems to get picked up by boto3 so pass default region instead
 
+Results!! go to your aws account and type in cloudwatch
+
+![cloudwatchaws](https://github.com/Elochike/aws-bootcamp-cruddur-2023/blob/main/images/cloudwatchlogs.PNG)
 
 ## Rollbar
 
