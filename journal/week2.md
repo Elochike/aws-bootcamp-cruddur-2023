@@ -32,7 +32,7 @@
 - Logs only provide insight into the state of a single application with specific time-stamped events that took place in the system. Application performance monitoring provides a more comprehensive way to find the root cause of performance issues. Most APM tools offer some form of distributed tracing while also providing detailed diagnostic data including code-level insights and queries.
 
 ## HoneyComb
-
+- Honeycomb.io is a cloud-based observability and monitoring platform for modern distributed systems and applications. It allows developers and DevOps teams to understand how their systems are performing, identify and troubleshoot issues, and optimize their applications for better performance and reliability.
 - When creating a new dataset in Honeycomb it will provide all these installation insturctions
 - We'll add the following files to our `requirements.txt`
 
@@ -136,8 +136,9 @@ span.set_attribute("user.id", user.id())
 
 ## X-Ray
 
-### Instrument AWS X-Ray for Flask
+- Amazon X-Ray is a service offered by Amazon Web Services (AWS) that allows developers to analyze and debug distributed applications in production. It provides a way to trace user requests as they travel through the different components of a distributed application, such as microservices, containers, and serverless functions.
 
+### Instrument AWS X-Ray for Flask
 
 ```sh
 export AWS_REGION="ca-central-1"
@@ -166,10 +167,22 @@ xray_url = os.getenv("AWS_XRAY_URL")
 xray_recorder.configure(service='Cruddur', dynamic_naming=xray_url)
 XRayMiddleware(app, xray_recorder)
 ```
+![xray67](https://github.com/Elochike/aws-bootcamp-cruddur-2023/blob/main/images/xray67.PNG)
 
 ### Setup AWS X-Ray Resources
 
+
+```sh
+FLASK_ADDRESS="https://4567-${GITPOD_WORKSPACE_ID}.${GITPOD_WORKSPACE_CLUSTER_HOST}"
+aws xray create-group \
+   --group-name "Cruddur" \
+   --filter-expression "service(\"$FLASK_ADDRESS\") {fault OR error}"
+```
+![xraygroup](https://github.com/Elochike/aws-bootcamp-cruddur-2023/blob/main/images/xraygroup.PNG)
+
+
 Add `aws/json/xray.json`
+
 
 ```json
 {
@@ -190,15 +203,10 @@ Add `aws/json/xray.json`
 ```
 
 ```sh
-FLASK_ADDRESS="https://4567-${GITPOD_WORKSPACE_ID}.${GITPOD_WORKSPACE_CLUSTER_HOST}"
-aws xray create-group \
-   --group-name "Cruddur" \
-   --filter-expression "service(\"$FLASK_ADDRESS\") {fault OR error}"
-```
-
-```sh
 aws xray create-sampling-rule --cli-input-json file://aws/json/xray.json
 ```
+
+![xraysampling](https://github.com/Elochike/aws-bootcamp-cruddur-2023/blob/main/images/xraysampling.PNG)
 
  [Install X-ray Daemon](https://docs.aws.amazon.com/xray/latest/devguide/xray-daemon.html)
 
@@ -232,6 +240,20 @@ We need to add these two env vars to our backend-flask in our `docker-compose.ym
       AWS_XRAY_URL: "*4567-${GITPOD_WORKSPACE_ID}.${GITPOD_WORKSPACE_CLUSTER_HOST}*"
       AWS_XRAY_DAEMON_ADDRESS: "xray-daemon:2000"
 ```
+![xraycompose](https://github.com/Elochike/aws-bootcamp-cruddur-2023/blob/main/images/xraycompose.PNG)
+
+
+- Run your containers an check the backend site
+![containersxray](https://github.com/Elochike/aws-bootcamp-cruddur-2023/blob/main/images/container%20xray.PNG)
+
+- check yor xray cntainer logs to see status is okay
+
+![xraylogs](https://github.com/Elochike/aws-bootcamp-cruddur-2023/blob/main/images/xraylogs.PNG)
+
+- Results !!!
+
+![xraytrace](https://github.com/Elochike/aws-bootcamp-cruddur-2023/blob/main/images/xraytracefound.PNG)
+
 
 ### Check service data for last 10 minutes
 
