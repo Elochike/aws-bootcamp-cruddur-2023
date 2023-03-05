@@ -200,7 +200,7 @@ Add `aws/json/xray.json` file
   }
 }
 ```
-- Create a sapling rule
+- Create a sampling rule
 ```sh
 aws xray create-sampling-rule --cli-input-json file://aws/json/xray.json
 ```
@@ -263,7 +263,6 @@ aws xray get-service-graph --start-time $(($EPOCH-600)) --end-time $EPOCH
 
 
 ## CloudWatch Logs
-
 
 Add to the `requirements.txt`
 
