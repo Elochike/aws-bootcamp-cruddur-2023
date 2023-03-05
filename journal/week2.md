@@ -332,17 +332,15 @@ Results!! go to your aws account and type in cloudwatch
 
 https://rollbar.com/
 
-Create a new project in Rollbar called `Cruddur`
-
-Add to `requirements.txt`
-
+- Create a new project in Rollbar called `Cruddur`
+- Add to `requirements.txt`
 
 ```
 blinker
 rollbar
 ```
 
-Install deps
+- Install deps
 
 ```sh
 pip install -r requirements.txt
@@ -357,13 +355,13 @@ export ROLLBAR_ACCESS_TOKEN=""
 gp env ROLLBAR_ACCESS_TOKEN=""
 ```
 
-Add to backend-flask for `docker-compose.yml`
+- Add to backend-flask for `docker-compose.yml`
 
 ```yml
 ROLLBAR_ACCESS_TOKEN: "${ROLLBAR_ACCESS_TOKEN}"
 ```
 
-Import for Rollbar
+- Import for Rollbar
 
 ```py
 import rollbar
@@ -393,7 +391,7 @@ def init_rollbar():
     got_request_exception.connect(rollbar.contrib.flask.report_exception, app)
 ```
 
-We'll add an endpoint just for testing rollbar to `app.py`
+- We'll add an endpoint just for testing rollbar to `app.py`
 
 ```py
 @app.route('/rollbar/test')
