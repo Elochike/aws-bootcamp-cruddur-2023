@@ -171,7 +171,7 @@ XRayMiddleware(app, xray_recorder)
 
 ### Setup AWS X-Ray Resources
 
-
+- To create a group
 ```sh
 FLASK_ADDRESS="https://4567-${GITPOD_WORKSPACE_ID}.${GITPOD_WORKSPACE_CLUSTER_HOST}"
 aws xray create-group \
@@ -181,8 +181,7 @@ aws xray create-group \
 ![xraygroup](https://github.com/Elochike/aws-bootcamp-cruddur-2023/blob/main/images/xraygroup.PNG)
 
 
-Add `aws/json/xray.json`
-
+Add `aws/json/xray.json` file
 
 ```json
 {
@@ -201,7 +200,7 @@ Add `aws/json/xray.json`
   }
 }
 ```
-
+- Create a sapling rule
 ```sh
 aws xray create-sampling-rule --cli-input-json file://aws/json/xray.json
 ```
@@ -213,13 +212,13 @@ aws xray create-sampling-rule --cli-input-json file://aws/json/xray.json
 [Github aws-xray-daemon](https://github.com/aws/aws-xray-daemon)
 [X-Ray Docker Compose example](https://github.com/marjamis/xray/blob/master/docker-compose.yml)
 
-
+-To dowload xray deamon (optional) or use a  docker image
 ```sh
  wget https://s3.us-east-2.amazonaws.com/aws-xray-assets.us-east-2/xray-daemon/aws-xray-daemon-3.x.deb
  sudo dpkg -i **.deb
  ```
 
-### Add Deamon Service to Docker Compose
+### Add Deamon Service(image) to Docker Compose
 
 ```yml
   xray-daemon:
