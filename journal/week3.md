@@ -27,7 +27,7 @@ Using the AWS Console we'll create a Cognito User Group
 - on this this project the user pool was created based on spend considerations, eg no MFA , using cognito defaults was selected also
 - at 3rd step name the use pool and review on the last atep
 
-![cogcreat](https://github.com/Elochike/aws-bootcamp-cruddur-2023/blob/main/images/cognitoUpoolcreate.png)
+
 
 ![cogpool](https://github.com/Elochike/aws-bootcamp-cruddur-2023/blob/main/images/cognitoUpoolcrea.PNG)
 
