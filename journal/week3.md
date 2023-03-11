@@ -1,16 +1,39 @@
 # Week 3 — Decentralized Authentication
 
+- Decentralized authentication is a type of authentication system that allows users to authenticate their identity without relying on a centralized authority or server.
+- AWS Cognito is a managed service offered by Amazon Web Services that provides user authentication, registration, and management capabilities for applications. It can be used to build a decentralized authentication system by leveraging its features and integrations with other AWS services.
+
+- One way to use AWS Cognito for decentralized authentication is to combine it with AWS Lambda and AWS Blockchain to build a decentralized identity management system. In this system, each user's identity is stored on a blockchain, and AWS Cognito is used to authenticate and manage the user's credentials.
+
+- When a user wants to authenticate their identity, they would send a request to AWS Cognito, which would then trigger a Lambda function. This function would then check the user's identity on the blockchain and return a response to AWS Cognito, which would either grant or deny the user access.
+
+- AWS Cognito can also be integrated with other AWS services, such as Amazon API Gateway, to secure APIs and microservices. This enables developers to build decentralized applications that rely on a decentralized authentication system, where users can authenticate their identity without a centralized authority.
+
 ## Install AWS Amplify
+- cd into the frontend-react-js and install aws-smplify --save
+- it should appear in packet.json file
 
 ```sh
 npm i aws-amplify --save
 ```
+![congnitopacket](https://github.com/Elochike/aws-bootcamp-cruddur-2023/blob/main/images/cognitopacketjson.PNG)
 
 ## Provision Cognito User Group
 
 Using the AWS Console we'll create a Cognito User Group
 
-## Configure Amplify
+- Go to your aws account and search for cognito 
+- then click on user pool and create a user pool
+- on this this project the user pool was created based on spend considerations, eg no MFA , using cognito defaults was selected also
+- at 3rd step name the use pool and review on the last atep
+
+![cogcreat](https://github.com/Elochike/aws-bootcamp-cruddur-2023/blob/main/images/cognitoUpoolcreate.png)
+
+![cogpool](https://github.com/Elochike/aws-bootcamp-cruddur-2023/blob/main/images/cognitoUpoolcrea.PNG)
+
+
+
+## Configure Amplifygo to
 
 We need to hook up our cognito pool to our code in the `App.js`
 
@@ -33,6 +56,8 @@ Amplify.configure({
   }
 });
 ```
+![cognitoEnv](https://github.com/Elochike/aws-bootcamp-cruddur-2023/blob/main/images/cognitoenvars.PNG)
+
 
 ## Conditionally show components based on logged in or logged out
 
@@ -77,6 +102,7 @@ We'll want to pass user to the following components:
 <DesktopNavigation user={user} active={'home'} setPopped={setPopped} />
 <DesktopSidebar user={user} />
 ```
+![coghome](https://github.com/Elochike/aws-bootcamp-cruddur-2023/blob/main/images/cognithome.PNG)
 
 We'll rewrite `DesktopNavigation.js` so that it it conditionally shows links in the left hand column
 on whether you are logged in or not.
@@ -206,6 +232,7 @@ export default function DesktopSidebar(props) {
 ```
 
 ## Signin Page
+- for the Signup page include aws-amplify
 
 ```js
 import { Auth } from 'aws-amplify';
@@ -239,6 +266,7 @@ if (cognitoErrors){
 // just before submit component
 {errors}
 ```
+![signin](https://github.com/Elochike/aws-bootcamp-cruddur-2023/blob/main/images/cognitosginin.PNG)
 
 ## Signup Page
 
@@ -280,6 +308,7 @@ if (cognitoErrors){
 //before submit component
 {errors}
 ```
+![codsignup](https://github.com/Elochike/aws-bootcamp-cruddur-2023/blob/main/images/cognitosignup.PNG)
 
 ## Confirmation Page
 
@@ -315,6 +344,7 @@ const onsubmit = async (event) => {
   return false
 }
 ```
+![cogconfirmation](https://github.com/Elochike/aws-bootcamp-cruddur-2023/blob/main/images/cognitoconfirmation.PNG)
 
 ## Recovery Page
 
@@ -342,6 +372,14 @@ const onsubmit_confirm_code = async (event) => {
   }
   return false
 }
+```
+![recovery](https://github.com/Elochike/aws-bootcamp-cruddur-2023/blob/main/images/congitorecoverycode.PNG)
+
+
+**various authentication test**
+
+
+
 
 ## Authenticating Server Side
 
@@ -352,6 +390,8 @@ Add in the `HomeFeedPage.js` a header eto pass along the access token
     Authorization: `Bearer ${localStorage.getItem("access_token")}`
   }
 ```
+
+
 
 In the `app.py`
 
