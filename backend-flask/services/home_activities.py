@@ -6,6 +6,7 @@ class HomeActivities:
     #logging disabled  based on spend 
     #logger.info("HomeActivities")
     now = datetime.now(timezone.utc).astimezone()
+    
     sql = query_wrap_array("""
       SELECT
         activities.uuid,
@@ -29,4 +30,5 @@ class HomeActivities:
           # this will return a tuple
           # the first field being the data
         json = cur.fetchone()
+        print(json)
     return json[0]
