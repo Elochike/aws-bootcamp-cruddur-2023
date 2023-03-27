@@ -1,5 +1,7 @@
 #! /usr/bin/bash
--e #if it fails dont progress to the next
+
+ -e #if it fails dont progress to the next
+
 CYAN='\033[1;36m'
 NO_COLOR='\033[0m'
 LABEL="db-schema-load"
