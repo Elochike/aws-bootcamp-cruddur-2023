@@ -1,3 +1,5 @@
+
+
 import json
 import psycopg2
 import os
@@ -16,8 +18,8 @@ def lambda_handler(event, context):
       sql = f"""
          INSERT INTO public.users (
           display_name, 
-          handle,
-          email, 
+          email,
+          handle, 
           cognito_user_id
           ) 
         VALUES(%s,%s,%s,%s)
@@ -32,7 +34,8 @@ def lambda_handler(event, context):
         user_handle,
         user_cognito_id
       ]
-      cur.execute(sql,*params)
+      sqlparams = [sql,params]
+      cur.execute(*sqlparams)
       conn.commit() 
 
     except (Exception, psycopg2.DatabaseError) as error:
