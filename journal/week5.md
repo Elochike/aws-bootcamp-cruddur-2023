@@ -2,7 +2,7 @@
 
 
 Set up the client using an aws docker image on the docker compose file 
-```
+```docker
 dynamodb-local:
     # https://stackoverflow.com/questions/67533058/persist-local-dynamodb-data-in-volumes-lack-permission-unable-to-open-databa
     # We needed to add user:root to get this working.
@@ -20,7 +20,7 @@ dynamodb-local:
 Set up boto3 in to requirements.txt and do a pip install
 
 create a schema-load file for ddb which would run on local or production
-```
+```sh
 #!/usr/bin/env python3
 
 import boto3
@@ -101,7 +101,7 @@ run the schema on local to generate output
 
 
 Create a bash script to list tables
-```
+```sh
 #! /usr/bin/bash
 set -e # stop if it fails at any point
 
