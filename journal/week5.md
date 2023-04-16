@@ -19,6 +19,7 @@ dynamodb-local:
  
 Set up boto3 in to requirements.txt and do a pip install
 
+## DynamoDB Bash Scripts
 create a schema-load file for ddb which would run on local or production
 ```sh
 #!/usr/bin/env python3
@@ -98,7 +99,7 @@ chmod u+x ./bin/ddb/schema-load
 run the schema on local to generate output
 
 
-
+## DynamoDB Bash Scripts
 
 Create a bash script to list tables
 ```sh
@@ -115,13 +116,15 @@ aws dynamodb list-tables $ENDPOINT_URL \
 --query TableNames \
 --output table
 ```
-  
 
-## DynamoDB Bash Scripts
+Then feed your seed data into dynamodb
+https://github.com/Elochike/aws-bootcamp-cruddur-2023/blob/main/backend-flask/bin/ddb/seed
 
-```sh
-./bin/ddb/schem-load
-```
+
+create a bash script to get coonversations
+https://github.com/Elochike/aws-bootcamp-cruddur-2023/blob/main/backend-flask/bin/ddb/patterns/get-conversations
+
+
 
 
 ## The Boundaries of DynamoDB
