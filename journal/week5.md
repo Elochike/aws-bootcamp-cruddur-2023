@@ -51,7 +51,9 @@ Then feed your seed data into dynamodb
 https://github.com/Elochike/aws-bootcamp-cruddur-2023/blob/main/backend-flask/bin/ddb/seed
 
 
-create a bash script to get coonversations
+create a scan file : note scan are expensive to perform expecially fr large data files . it may be better to use the aws console  
+
+create a bash script to get coonversations and list-converastion (querying the Data)
 https://github.com/Elochike/aws-bootcamp-cruddur-2023/blob/main/backend-flask/bin/ddb/patterns/get-conversations
 
 
