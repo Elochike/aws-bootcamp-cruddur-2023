@@ -5,7 +5,7 @@ import os
 import sys
 from datetime import datetime, timedelta, timezone
 import uuid
-
+#this is tor the lib.db to be accessible
 current_path = os.path.dirname(os.path.abspath(__file__))
 parent_path = os.path.abspath(os.path.join(current_path, '..', '..'))
 sys.path.append(parent_path)
