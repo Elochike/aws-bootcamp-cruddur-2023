@@ -1,7 +1,7 @@
 # Week 5 — DynamoDB and Serverless Caching
 
 
-Set up the client using an aws docker image on the docker compose file 
+- Set up the client using an aws docker image on the docker compose file 
 ```docker
 dynamodb-local:
     # https://stackoverflow.com/questions/67533058/persist-local-dynamodb-data-in-volumes-lack-permission-unable-to-open-databa
@@ -17,7 +17,7 @@ dynamodb-local:
     working_dir: /home/dynamodblocal
  ````
  
-Set up boto3 in to requirements.txt and do a pip install
+- Set up boto3 in to requirements.txt and do a pip install
 
 ## DynamoDB Bash Scripts
 - Create a schema-load file for ddb which would run on local or production
@@ -26,12 +26,12 @@ change the file to be executable
 ```
 chmod u+x ./bin/ddb/schema-load
 ```
-run the schema on local to generate output
+- run the schema on local to generate output
 
 
 ## DynamoDB Bash Scripts
 
-Create a bash script to list tables
+- Create a bash script to list tables
 ```sh
 #! /usr/bin/bash
 set -e # stop if it fails at any point
@@ -47,13 +47,13 @@ aws dynamodb list-tables $ENDPOINT_URL \
 --output table
 ```
 
-Then feed your seed data into dynamodb
+- Then feed your seed data into dynamodb
 https://github.com/Elochike/aws-bootcamp-cruddur-2023/blob/main/backend-flask/bin/ddb/seed
 
 
-create a scan file : note scan are expensive to perform expecially fr large data files . it may be better to use the aws console  
+- Create a scan file : note scan are expensive to perform expecially fr large data files . it may be better to use the aws console  
 
-create a bash script to get coonversations and list-converastion (querying the Data)
+- Create a bash script to get coonversations and list-converastion (querying the Data)
 https://github.com/Elochike/aws-bootcamp-cruddur-2023/blob/main/backend-flask/bin/ddb/patterns/get-conversations
 
 
