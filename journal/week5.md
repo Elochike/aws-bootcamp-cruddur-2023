@@ -47,14 +47,17 @@ aws dynamodb list-tables $ENDPOINT_URL \
 --output table
 ```
 
+**Implement Pattern Scripts for Read and List Conversations**
 - Then feed your seed data into dynamodb
 https://github.com/Elochike/aws-bootcamp-cruddur-2023/blob/main/backend-flask/bin/ddb/seed
-
-
 - Create a scan file : note scan are expensive to perform expecially fr large data files . it may be better to use the aws console  
-
 - Create a bash script to get coonversations and list-converastion (querying the Data)
 https://github.com/Elochike/aws-bootcamp-cruddur-2023/blob/main/backend-flask/bin/ddb/patterns/get-conversations
+
+**Implement Update Cognito ID Script for Postgres Database**
+- Create a ddb.py file just like dp.py but for dynamodb
+- Then you need to get the users id(SUB) from AWS so the can be udated in the database , dont forget to also add evn vars (AWS_USER_POOL_ID)
+- 
 
 
 
@@ -69,7 +72,7 @@ https://github.com/Elochike/aws-bootcamp-cruddur-2023/blob/main/backend-flask/bi
 - Don't create UUID for entity if you don't have an access pattern for it
 
 
-3 Access Patterns
+***3 Access Patterns
 
 ## Pattern A  (showing a single conversation)
 
@@ -148,6 +151,14 @@ WHERE
   message_groups.uuid = {{message_group_uuid}}
   AND message_groups.user_uuid = {{user_uuid}}
 ```
+
+
+
+
+
+
+
+
 
 
 ## Serverless Caching
