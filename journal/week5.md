@@ -47,14 +47,14 @@ aws dynamodb list-tables $ENDPOINT_URL \
 --output table
 ```
 
-***Implement Pattern Scripts for Read and List Conversations
+**Implement Pattern Scripts for Read and List Conversations**
 - Then feed your seed data into dynamodb
 https://github.com/Elochike/aws-bootcamp-cruddur-2023/blob/main/backend-flask/bin/ddb/seed
 - Create a scan file : note scan are expensive to perform expecially fr large data files . it may be better to use the aws console  
 - Create a bash script to get coonversations and list-converastion (querying the Data)
 https://github.com/Elochike/aws-bootcamp-cruddur-2023/blob/main/backend-flask/bin/ddb/patterns/get-conversations
 
-**Implement Update Cognito ID Script for Postgres Database
+**Implement Update Cognito ID Script for Postgres Database**
 - Create a ddb.py file just like dp.py but for dynamodb
 - Then you need to get the users id(SUB) from AWS so the can be udated in the database , dont forget to also add evn vars (AWS_USER_POOL_ID)
 - 
